@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35806.99
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamAndPmiNX", "CamAndPmiNX.csproj", "{798D5C4A-2190-46B4-83FC-6F2CFBC1CBC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projektmappenelemente", "Projektmappenelemente", "{84D27F74-D2BA-6C25-2661-968F101900D9}"
+	ProjectSection(SolutionItems) = preProject
+		CamAndPmiBlockStylerUI.cs = CamAndPmiBlockStylerUI.cs
+		CamHighlighter.cs = CamHighlighter.cs
+		CAMattributes.cs = CAMattributes.cs
+		CamListBuilder.cs = CamListBuilder.cs
+		PmiHighlighter.cs = PmiHighlighter.cs
+		PmiListBuilder.cs = PmiListBuilder.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{798D5C4A-2190-46B4-83FC-6F2CFBC1CBC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{798D5C4A-2190-46B4-83FC-6F2CFBC1CBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{798D5C4A-2190-46B4-83FC-6F2CFBC1CBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{798D5C4A-2190-46B4-83FC-6F2CFBC1CBC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECF2910C-4647-49B6-94F7-F73070A762FC}
+	EndGlobalSection
+EndGlobal

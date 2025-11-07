@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<NXManagedDir>$(UGII_BASE_DIR)\NXBIN\managed</NXManagedDir>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="NXOpen">
+			<HintPath>$(NXManagedDir)\NXOpen.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="NXOpen.Guide">
+			<HintPath>$(NXManagedDir)\NXOpen.Guide.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="NXOpen.UF">
+			<HintPath>$(NXManagedDir)\NXOpen.UF.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="NXOpen.Utilities">
+			<HintPath>$(NXManagedDir)\NXOpen.Utilities.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="NXOpenUI">
+			<HintPath>$(NXManagedDir)\NXOpenUI.dll</HintPath>
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Reference Update="System.Core">
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Update="System">
+			<Private>False</Private>
+		</Reference>
+	</ItemGroup>
+</Project>

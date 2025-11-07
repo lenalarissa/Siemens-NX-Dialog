@@ -1,0 +1,53 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/lenaheisel/Git/Siemens-NX-GWIEIT/CAMandPMI/CamAndPmiNX/CamAndPmiNX.csproj": {}
+  },
+  "projects": {
+    "/Users/lenaheisel/Git/Siemens-NX-GWIEIT/CAMandPMI/CamAndPmiNX/CamAndPmiNX.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/lenaheisel/Git/Siemens-NX-GWIEIT/CAMandPMI/CamAndPmiNX/CamAndPmiNX.csproj",
+        "projectName": "CamAndPmiNX",
+        "projectPath": "/Users/lenaheisel/Git/Siemens-NX-GWIEIT/CAMandPMI/CamAndPmiNX/CamAndPmiNX.csproj",
+        "packagesPath": "/Users/lenaheisel/.nuget/packages/",
+        "outputPath": "/Users/lenaheisel/Git/Siemens-NX-GWIEIT/CAMandPMI/CamAndPmiNX/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/lenaheisel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net48"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net48",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net48",
+          "dependencies": {
+            "Microsoft.NETFramework.ReferenceAssemblies": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.2, )",
+              "autoReferenced": true
+            }
+          },
+          "runtimeIdentifierGraphPath": "/Users/lenaheisel/.vscode-dotnet-sdk/.dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
