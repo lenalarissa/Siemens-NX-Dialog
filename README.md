@@ -67,3 +67,14 @@ While you can execute the code directly via **File > Execute > NX Open...** or b
    * Click **Change Icon** to assign a custom icon, if desired.
 
 The button is now ready to use and will persist even after restarting Siemens NX.
+
+## Team
+
+![IMG_4087](https://github.com/user-attachments/assets/949c51f5-c7e2-47dd-ba5f-d76b4b991e4a)
+
+Lena Larissa Heisel (Product Owner, Testing, Developer)
+Nuzhat Rahman (Documentation)
+Sara Rosello Paredes (UX/UI Design)
+Fanny Zotter (Git Master, Developer)
+
+
