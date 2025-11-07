@@ -1,0 +1,531 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PMI and CAM Integration in SIEMENS NX</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #000028;
+        }
+
+        /* Partner logo section */
+        .partner-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(0, 204, 204, 0.2);
+        }
+
+        .partner-logo {
+            height: 40px;
+            width: auto;
+            max-width: 150px;
+            object-fit: contain;
+        }
+
+        /* Modern header */
+        header {
+            background: #00CCCC;
+            color: #000028;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+            nav a {
+                color: #000028;
+                margin-left: 2rem;
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                padding: 0.5rem 0;
+                position: relative;
+            }
+
+                nav a:hover {
+                    color: #000028;
+                }
+
+                nav a::after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 2px;
+                    bottom: 0;
+                    left: 0;
+                    background-color: #000028;
+                    transition: width 0.3s ease;
+                }
+
+                nav a:hover::after {
+                    width: 100%;
+                }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0, 32, 40, 0.8), rgba(0, 32, 40, 0.9));
+            padding: 6rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+            .hero h1 {
+                font-size: 3rem;
+                margin-bottom: 1.5rem;
+                color: #00CCCC;
+                font-weight: 700;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+                max-width: 700px;
+                margin: 0 auto 2rem;
+                color: #ffffff;
+            }
+
+        /* Card-style sections */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 204, 204, 0.1);
+            }
+
+            /*BIG IMAGE FROM HERE____*/
+        .content-image {
+            width: 100%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            border: 1px solid #00CCCC;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        figure.innovation-image {
+            margin: 2.5rem auto;
+            text-align: center;
+            max-width: 700px;
+        }
+
+            figure.innovation-image img {
+                width: 100%;
+                border-radius: 4px;
+            }
+
+        figcaption {
+            font-size: 0.9rem;
+            color: #00CCCC;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+         /* Image + Text Row Styles */
+        .feature-row {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin: 3rem 0;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+        }
+
+            .feature-row.reversed {
+                flex-direction: row-reverse;
+            }
+
+        .feature-text {
+            flex: 1;
+            min-width: 30%;
+        }
+
+        .feature-visual {
+            flex: 1.3;
+            max-width: 60%;
+            border-radius: 6px;
+            border: 1px solid #00CCCC;
+            box-shadow: 0 4px 20px rgba(0, 204, 204, 0.15);
+        }
+
+        /* Video container styles */
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+
+            .video-container video {
+                width: 100%;
+                border-radius: 8px;
+                border: 1px solid #00CCCC;
+                box-shadow: 0 4px 20px rgba(0, 204, 204, 0.15);
+            }
+
+        .video-caption {
+            font-size: 0.9rem;
+            color: #00CCCC;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Style for hyperlinks in content */
+        a {
+            color: #00CCCC; /* Same teal as your headings */
+            text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+
+            a:hover {
+                color: #80E0E0; /* Lighter teal for hover */
+                text-decoration: none;
+            }
+
+        @media (max-width: 768px) {
+            .feature-row,
+            .feature-row.reversed {
+                flex-direction: column;
+            }
+
+            .feature-visual {
+                max-width: 100%;
+                margin-top: 1.5rem;
+            }
+        }
+
+        h2 {
+            color: #00CCCC;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+            h2::after {
+                content: '';
+                position: absolute;
+                width: 50%;
+                height: 3px;
+                bottom: -10px;
+                left: 0;
+                background-color: #00CCCC;
+            }
+
+        h3 {
+            color: #00CCCC;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #00CCCC;
+            color: #000028;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            color: #000028;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+            .footer-column ul li {
+                margin-bottom: 0.8rem;
+            }
+
+                .footer-column ul li a {
+                    color: #000028;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                }
+
+                    .footer-column ul li a:hover {
+                        color: #000028;
+                        text-decoration: underline;
+                    }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+                nav a {
+                    margin: 0.5rem 0;
+                }
+
+            .partner-logos {
+                gap: 1rem;
+                padding: 0.8rem;
+            }
+
+            .partner-logo {
+                height: 30px;
+                max-width: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="partner-logos">
+        <img src="siemens-logo.png" alt="Siemens" class="partner-logo">
+        <img src="swinburne-logo.jpg" alt="Swinburne University of Technology" class="partner-logo">
+        <img src="htw-logo.png" alt="Hochschule für Technik und Wirtschaft" class="partner-logo">
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo">PMI-CAM Integration Project</div>
+            <div>
+                <a href="#about">Context</a>
+                <a href="#features">Key Features</a>
+                <a href="#contact">Team</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" style="background: linear-gradient(rgba(0, 32, 40, 0.8), rgba(0, 32, 40, 0.9)), url('background.avif') center/cover no-repeat;">
+        <h1>PMI and CAM Integration in SIEMENS NX</h1>
+        <p>A GWiEIT 2025 Summer School Project. PMI-CAM Integration in Siemens NX</p>
+    </section>
+
+    <section id="solutions" class="section">
+        <h2>What is PMI and CAM?</h2>
+        <div class="section-container">
+            <div class="card wide">
+                <h3>PMI</h3>
+                <p>
+                    It stands for Product Manufacture Information and it refers to the manufacturing
+                    information embedded within a 3D CAD model. It can be anything from the depth of a hole, to the
+                    thickness of a wall, for example.
+                </p>
+            </div>
+            <div class="card wide">
+                <h3>CAM</h3>
+                <p>
+                    It stands for Computer Aided Manufacturing and is the software used to translate the PMIs into
+                    instructions for automated manufacturing equipment like CNC machines. It is a set of
+                    instructions from which a digital part is manufactured in the real world. Its main goal is to speed 
+                    up production and create precise, consistent components and tools, often using only the needed material 
+                    to reduce waste and energy use. 
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2>Context</h2>
+        <div class="section-container">
+            <div class="card">
+                <h3>The Problem</h3>
+                <p>
+                    Currently, there is no connection shown between PMI and CAM operations in NX.
+                    When a user adds CAM operations, they need to check manually if the relevant PMI
+                    is matching, toggling between the two components. Poor interoperability between
+                    digital tools, which is often worsened by manual data entry, costs the U.S. capital
+                    facilities industry about
+                    <a href="https://doi.org/10.6028/NIST.GCR.04-867" target="_blank">$15.8 billion per year</a>.
+                </p>
+            </div>
+            <div class="card">
+                <h3>The Solution</h3>
+                <p>
+                    To solve the problem, we created an integrated dialog window inside Siemens NX, targeted 
+                    toward CAM engineers and programmers, that shows the connection between PMI and CAM operations
+                    and allows the user to highlight them on the part that will be manufactured. This can help 
+                    save time and resources when manufacturing products.
+                </p>
+            </div>
+            <div class="card">
+                <h3>The Innovation</h3>
+                <p>
+                    When engineering teams have to devote time and focus to ensuring data consistency
+                    across systems, innovation is equally limited. With a digital manufacture market
+                    that is predicted to reach 
+                    <a href="https://introspectivemarketresearch.com/reports/digital-manufacturing-market/" target="_blank">USD 1,813.07 billion by 2032</a>,
+                    this solution has the potential to enhance production efficiency, reduce operating costs
+                    and improve product quality.
+                </p>
+            </div>
+        </div> 
+    </section>
+
+    <section id="features" class="section">
+        <h2>Key Features</h2>
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>Overview</h3>
+                <p>
+                    The PMI–CAM dialog is a custom-built tool developed for Siemens NX that allows users to easily
+                    explore how PMI annotations are linked to CAM operations within a part file. It is specifically
+                    designed to assist engineers and NX programmers during the manufacturing setup process by clearly
+                    showing which product features are referenced by each CAM operation. This tool has been tested and
+                    validated using Siemens NX 2412. By integrating design and manufacturing data in one interface, the
+                    dialog reduces the need to switch between windows and improves clarity. It also helps ensure that
+                    critical tolerances, finishes, and dimensions are not overlooked during machining, supporting more
+                    accurate and efficient workflows.
+                </p>
+            </div>
+        </div>
+        <img src="dialog-display.png" alt="Current NX interface showing missing PMI-CAM connection" class="content-image">
+        <div class="section-container">
+            <div class="card">
+                <h3>Integrated Dialog Window</h3>
+                <p>
+                    Building on the work that was done by the GWiEIT cohort of Track 3, we were able to fully integrate
+                    the dialog window inside NX using the UI Blockstyler,  a user interface tool in Siemens NX that
+                    allows developers to create custom dialog windows. The final dialog box, which can be
+                    opened with a button, has each PMI and CAM listed in their respective list boxes.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Synchronous PMI-CAM Highlighting</h3>
+                <p>
+                    Both PMI and CAM list boxes have checkboxes on the left side. When a PMI is clicked,
+                    the checkbox gets crossed off, and so do all the respective CAM operation in the list box
+                    below. Furthermore, there is a tree list box at the top of the dialog window, where all the
+                    selected PMI with their respective CAM operations can be seen displayed next to each other.
+                    This helps visually organise the screen when a part has several PMI and CAM operations.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Reverse Mapping</h3>
+                <p>
+                    In addition to being able to click the PMI and seeing all the CAM operations associated
+                    to a surface/feature, the user can also select a specific CAM operation and all the related
+                    PMIs will be highlighted.
+                    Additionally, the program alerts the user with a notification if no PMI or CAM operations are found in the part file.
+                </p>
+            </div>
+        </div>
+        <div class="video-container">
+            <video controls>
+                <source src="demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p class="video-caption">Demo of the PMI-CAM integration tool in action</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>The Team</h2>
+        <div class="feature-row">
+            <div class="feature-text">
+                <h3>Lena Heisel</h3>
+                <p>Product Owner</p>
+                <br>
+                <h3>Fanny Zotter</h3>
+                <p>Git Master</p>
+                <br>
+                <h3>Nuzhat Rahman</h3>
+                <p>Project Documentation</p>
+                <br>
+                <h3>Sara Rosello</h3>
+                <p>UX and UI Design</p>
+            </div>
+            <img src="team.jpg" alt="Team photo" class="feature-visual">
+    </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Project</h3>
+                    <ul>
+                        <li><a href="#about">Context</a></li>
+                        <li><a href="#features">Key Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Partners</h3>
+                    <ul>
+                        <li><a href="https://plm.sw.siemens.com/en-US/nx/manufacturing/" target="_blank">Siemens</a></li>
+                        <li><a href="https://www.swinburne.edu.au/about/our-structure/organisational-structure/schools-departments/school-engineering/department-mechanical-engineering-product-design-engineering" target="_blank">Swinburne University of Technology</a></li>
+                        <li><a href="https://projekte.htw-berlin.de/en/hochschule/global-women-in-engineering-and-it/global-wieit-international-summer-school/" target="_blank">Hochschule für Technik und Wirtschaft</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="https://www.canva.com/design/DAGtUi1Yqc4/Tm-m1GE3tMn4eer-OfW9Sg/edit?utm_content=DAGtUi1Yqc4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank">Final Presentation</a></li>
+                        <li><a href="https://github.com/fannyzotter/Siemens-NX-GWIEIT" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>A GWiEIT 2025 Summer School Project. PMI-CAM Integration in Siemens NX.</p>
+            </div>
+        </footer>
+</body>
+</html>
